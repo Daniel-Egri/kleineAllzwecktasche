@@ -1,6 +1,75 @@
 <!DOCTYPE html>
-<html>
-  <body>
-    <h1>Das ist die Kontakt Seite.</h1>
-  </body>
+<html lang="de">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Die praktische Tasche - Kontakt</title>
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
+    <style>
+        .kontakt-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+        }
+        .map-container iframe {
+            width: 100%;
+            height: 400px;
+            border: 0;
+            border-radius: 8px;
+        }
+        @media (max-width: 768px) {
+            .kontakt-grid { grid-template-columns: 1fr; }
+        }
+    </style>
+</head>
+<body>
+
+    <nav class="container">
+        <ul><li><strong>Allzwecktasche</strong></li></ul>
+        <ul>
+            <li><a href="index.html">Home</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="produkt.html">Produkt</a></li>
+            <li><a href="kontakt.html" role="button">Kontakt</a></li>
+        </ul>
+    </nav>
+
+    <main class="container">
+        <h1>Kontaktieren Sie uns</h1>
+        <p>Haben Sie Fragen zur praktischen Tasche? Schreiben Sie uns oder besuchen Sie uns vor Ort.</p>
+
+        <div class="kontakt-grid">
+            <section>
+                <h3>Schreiben Sie uns</h3>
+                <form action="https://formspree.io/f/DEINE_ID" method="POST">
+                    <label for="name">Name</label>
+                    <input type="text" id="name" name="name" placeholder="Ihr Name" required>
+
+                    <label for="email">E-Mail Adresse</label>
+                    <input type="email" id="email" name="_replyto" placeholder="ihre@email.de" required>
+
+                    <label for="message">Nachricht</label>
+                    <textarea id="message" name="message" placeholder="Wie können wir helfen?" rows="5" required></textarea>
+
+                    <button type="submit">Nachricht absenden</button>
+                </form>
+            </section>
+
+            <section class="map-container">
+                <h3>Unser Standort</h3>
+                <iframe 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.40922274!2d13.404954!3d52.520006!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDMxJzEyLjAiTiAxM8KwMjQnMTcuOCJF!5e0!3m2!1sde!2sde!4v1625000000000" 
+                    allowfullscreen="" 
+                    loading="lazy">
+                </iframe>
+                <p><small>Musterstraße 1, 12345 Musterstadt</small></p>
+            </section>
+        </div>
+    </main>
+
+    <footer class="container">
+        <small><a href="impressum.html">Impressum</a> | &copy; 2026 DKL</small>
+    </footer>
+
+</body>
 </html>
