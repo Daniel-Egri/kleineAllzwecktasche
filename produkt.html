@@ -33,58 +33,44 @@
         @media (max-width: 768px) {
             .produkt-header { grid-template-columns: 1fr; }
         }
+  /* --- NEUES MODERNES LAYOUT START --- */
   :root {
-    --primary: #8b5a2b; /* Dein Braun */
+    --primary: #8b5a2b; /* Dein Braun für die Buttons */
     --primary-hover: #6f4722;
   }
 
   body {
-    /* Ein moderner Verlauf an den Seiten + die Textur */
+    /* Seitliche Textur und moderner Farbton */
     background-color: #f0ede9;
     background-image: 
         linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 50%, rgba(255,255,255,0.5) 100%),
         url("https://www.transparenttextures.com/patterns/linen.png");
     background-attachment: fixed;
     margin: 0;
-    padding: 0;
   }
 
-  /* Wir machen aus dem Hauptinhalt eine "schwebende" Karte */
+  /* Macht aus der Produktseite eine moderne "Karte" */
   main.container {
     background: white;
     padding: 2rem;
     border-radius: 20px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.05); /* Weicher Schatten */
+    box-shadow: 0 10px 30px rgba(0,0,0,0.05);
     margin-top: 2rem;
-    margin-bottom: 2rem;
     border: 1px solid rgba(0,0,0,0.05);
   }
 
-  /* Die Navigationsleiste passend dazu */
+  /* Moderner Glass-Effekt für die Navi */
   nav.container {
     background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px); /* Moderner Glass-Effekt */
+    backdrop-filter: blur(10px); 
     border-radius: 0 0 20px 20px;
     padding: 0.5rem 1.5rem;
     position: sticky;
     top: 0;
     z-index: 1000;
   }
-
-  h1 {
-    font-family: 'Georgia', serif; /* Etwas edler */
-    letter-spacing: -1px;
-  }
-
-  img {
-    border-radius: 12px;
-    transition: transform 0.3s ease;
-  }
-
-  img:hover {
-    transform: translateY(-5px); /* Kleiner Bewegungseffekt beim Drüberfahren */
-  }
-    </style>
+  /* --- NEUES MODERNES LAYOUT ENDE --- */
+        <style>
 </head>
 <body>
 
