@@ -6,26 +6,29 @@
     <title>Die praktische Tasche</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-  body {
-    background-color: #f4f1ea; /* Ein warmes Cremeweiß */
-    /* Dieses Muster simuliert eine feine Webstruktur */
-    background-image: url("https://www.transparenttextures.com/patterns/linen.png");
-  }
+      /* Hier definieren wir deine Markenfarbe */
+      :root {
+        --primary: #8b5a2b; /* Das Braun für Links und Buttons */
+        --primary-hover: #6f4722; /* Ein dunkleres Braun beim Drüberfahren */
+      }
 
-  /* Kontrast-Farbe für die Tasche (z.B. Waldgrün) */
-  :root {
-    --primary: #2e4d32;
-  }
-          :root {
-    --primary: #8b5a2b; /* Ein schönes Leder-Braun */
-    --primary-hover: #6f4722;
-  }
+      /* Diese Zeilen sorgen für die Stoff-Hintergrundtextur */
+      body {
+        background-color: #fdfaf5; /* Ein ganz helles Creme */
+        background-image: url("https://www.transparenttextures.com/patterns/linen.png");
+      }
 
-  /* Alle Links und Buttons in der neuen Farbe */
-  a, button, [role="button"] {
-    --background-color: var(--primary);
-    --border-color: var(--primary);
-  }
+      /* Das Bild schöner abrunden (passend zur Tasche) */
+      img {
+        border-radius: 15px;
+        box-shadow: 0 4px 10px rgba(0,0,0,0.1);
+      }
+      
+      /* Die Navigationsleiste etwas schöner absetzen */
+      nav {
+        border-bottom: 1px solid #e0e0e0;
+        margin-bottom: 2rem;
+      }
     </style>
 </head>
 <body>
