@@ -48,31 +48,28 @@
     margin: 0;
   }
 
-  /* Macht aus der Produktseite eine moderne, abgehobene Karte */
+  /* Markante Produktkarte mit Kontrast-Hintergrund */
   main.container {
-    background: white;
-    padding: 3rem; /* Mehr Platz zum Atmen im Inneren */
-    border-radius: 24px;
+    background: #fdfdfd; /* Ein minimaler Graustich, damit es sich von reinem Weiß abhebt */
+    padding: 3rem;
+    border-radius: 12px; /* Etwas weniger rund wirkt oft moderner/technischer */
     
-    /* Ein satterer Schatten für mehr Tiefe (Schwebe-Effekt) */
-    box-shadow: 
-        0 20px 40px rgba(0,0,0,0.08), 
-        0 1px 3px rgba(0,0,0,0.05);
+    /* Ein richtig fetter, dunkler Rahmen für den "Pop"-Effekt */
+    border: 3px solid #222; 
     
-    /* Ein feiner Rahmen, damit sich Weiß von Weiß absetzt */
-    border: 1px solid rgba(0,0,0,0.1);
+    /* Ein harter Schatten für einen Comic- oder modernen Grafik-Look */
+    box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
     
     margin-top: 3rem;
     margin-bottom: 3rem;
   }
 
-  /* Optional: Den Hintergrund der Seite noch ein klein wenig abdunkeln */
-  body {
-    background-color: #e8e6e1; /* Ein etwas kräftigeres Greige */
-    /* Deine Textur bleibt darunter bestehen */
-    background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.3) 0%, transparent 50%, rgba(255,255,255,0.3) 100%),
-        url("https://www.transparenttextures.com/patterns/linen.png");
+  /* Optional: Den Bereich hinter dem Produktfoto nochmals leicht einfärben */
+  article.produkt-header {
+    background: #f1f1f1;
+    padding: 1.5rem;
+    border-radius: 8px;
+    border: 1px solid #ddd;
   }
 
   /* Moderner Glass-Effekt für die Navi */
