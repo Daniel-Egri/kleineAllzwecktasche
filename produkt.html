@@ -6,85 +6,133 @@
     <title>Die praktische Tasche - Produkt</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-        /* Ein bisschen eigenes CSS für die Galerie */
+        :root {
+            --primary: #8b5a2b; 
+            --primary-hover: #6f4722;
+        }
+
+        body {
+            background-color: #f0ede9;
+            background-image: 
+                linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 50%, rgba(255,255,255,0.5) 100%),
+                url("https://www.transparenttextures.com/patterns/linen.png");
+            background-attachment: fixed;
+            margin: 0;
+        }
+
+        /* Moderner Glass-Effekt für die Navi */
+        nav.container {
+            background: rgba(255, 255, 255, 0.8);
+            backdrop-filter: blur(10px); 
+            border-radius: 0 0 20px 20px;
+            padding: 0.5rem 1.5rem;
+            position: sticky;
+            top: 0;
+            z-index: 1000;
+        }
+
+        main.container {
+            margin-top: 3rem;
+            margin-bottom: 3rem;
+        }
+
+        article.produkt-header {
+            background: white;
+            padding: 2.5rem;
+            border-radius: 20px;
+            border: 3px solid #222;
+            box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 2rem;
+            align-items: center;
+        }
+
+        @media (max-width: 768px) {
+            article.produkt-header { grid-template-columns: 1fr; }
+        }
+
+        /* Galerie-Styling */
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 1rem;
             margin-bottom: 2rem;
         }
+
         .galerie-grid img {
             border-radius: 8px;
-            cursor: pointer;
+            cursor: zoom-in;
             transition: transform 0.2s;
             width: 100%;
             height: 200px;
-            object-fit: cover; /* Schneidet Bilder gleichmäßig zu */
+            object-fit: cover;
+            border: 1px solid #ddd;
         }
+
         .galerie-grid img:hover {
-            transform: scale(1.05);
+            transform: scale(1.03);
         }
-        .produkt-header {
-            display: grid;
-            grid-template-columns: 1fr 1fr;
-            gap: 2rem;
+
+        /* LIGHTBOX STYLING (Der weiße Kasten beim Klicken) */
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
             align-items: center;
+            cursor: pointer;
         }
-        @media (max-width: 768px) {
-            .produkt-header { grid-template-columns: 1fr; }
+
+        .lightbox-content {
+            background: white;
+            padding: 10px;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 80%;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            position: relative;
         }
-  :root {
-    --primary: #8b5a2b; /* Dein Braun für die Buttons */
-    --primary-hover: #6f4722;
-  }
 
-  body {
-    /* Seitliche Textur und moderner Farbton */
-    background-color: #f0ede9;
-    background-image: 
-        linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 50%, rgba(255,255,255,0.5) 100%),
-        url("https://www.transparenttextures.com/patterns/linen.png");
-    background-attachment: fixed;
-    margin: 0;
-  }
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 12px;
+            display: block;
+        }
 
-    /* Ein harter Schatten für einen Comic- oder modernen Grafik-Look */
-    box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
-    
-    margin-top: 3rem;
-    margin-bottom: 3rem;
-  }
-
-  /* Optional: Den Bereich hinter dem Produktfoto nochmals leicht einfärben */
-  article.produkt-header {
-    background: #f1f1f1;
-    padding: 1.5rem;
-    border-radius: 8px;
-    border: 3px solid #222;
-  }
-
-  /* Moderner Glass-Effekt für die Navi */
-  nav.container {
-    background: rgba(255, 255, 255, 0.8);
-    backdrop-filter: blur(10px); 
-    border-radius: 0 0 20px 20px;
-    padding: 0.5rem 1.5rem;
-    position: sticky;
-    top: 0;
-    z-index: 1000;
-  }
-        </style> </head>
+        .close-btn {
+            position: absolute;
+            top: -15px;
+            right: -15px;
+            background: var(--primary);
+            color: white;
+            width: 35px;
+            height: 35px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-weight: bold;
+            border: 2px solid white;
+        }
+    </style>
+</head>
 <body>
 
     <nav class="container">
         <ul>
             <li>
-  <strong style="display: flex; align-items: center; gap: 10px;">
-    <span style="background: #8b5a2b; color: white; padding: 2px 8px; border-radius: 4px; font-family: sans-serif; font-size: 0.8em;">DKL</span> 
-    Taschenmanufaktur
-  </strong>
+                <strong style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #8b5a2b; color: white; padding: 2px 8px; border-radius: 4px; font-family: sans-serif; font-size: 0.8em;">DKL</span> 
+                    Taschenmanufaktur
+                </strong>
             </li>
-            
         </ul>
         <ul>
             <li><a href="index.html">Home</a></li>
@@ -97,7 +145,7 @@
     <main class="container">
         <article class="produkt-header">
             <div>
-                <img src="images/Noel.jpg" alt="Die praktische Tasche Hauptansicht" style="border-radius: 12px;">
+                <img src="images/Noel.jpg" alt="Die praktische Tasche Hauptansicht" style="border-radius: 12px; border: 1px solid #ddd;">
             </div>
             <div>
                 <h1>Die praktische Tasche</h1>
@@ -115,34 +163,43 @@
 
         <hr>
 
-<section>
-    <h2>Galerie (Klicken zum Vergrößern)</h2>
-    <div class="galerie-grid" style="display: grid; grid-template-columns: repeat(auto-fit, minmax(150px, 1fr)); gap: 1rem;">
-        
-        <a href="images/Detailansicht.png" target="_blank">
-            <img src="images/Detailansicht.png" alt="Detailansicht" style="cursor: zoom-in; border-radius: 8px;">
-        </a>
-        
-        <a href="images/Innenansicht.png" target="_blank">
-            <img src="images/Innenansicht.png" alt="Innenansicht" style="cursor: zoom-in; border-radius: 8px;">
-        </a>
-        
-        <a href="images/Trageansicht.png" target="_blank">
-            <img src="images/Trageansicht.png" alt="Trageansicht" style="cursor: zoom-in; border-radius: 8px;">
-        </a>
-        
-        <a href="images/Farbvarianten.png" target="_blank">
-            <img src="images/Farbvarianten.png" alt="Farbvarianten" style="cursor: zoom-in; border-radius: 8px;">
-        </a>
-        
-    </div>
-</section>
-        
+        <section>
+            <h2>Galerie (Klicken zum Vergrößern)</h2>
+            <div class="galerie-grid">
+                <img src="images/Detailansicht.png" alt="Detailansicht" onclick="openLightbox(this.src)">
+                <img src="images/Innenansicht.png" alt="Innenansicht" onclick="openLightbox(this.src)">
+                <img src="images/Trageansicht.png" alt="Trageansicht" onclick="openLightbox(this.src)">
+                <img src="images/Farbvarianten.png" alt="Farbvarianten" onclick="openLightbox(this.src)">
+            </div>
+        </section>
     </main>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <div class="close-btn">X</div>
+            <img id="lightbox-img" src="" alt="Vergrößerte Ansicht">
+        </div>
+    </div>
 
     <footer class="container">
         <small>&copy; 2026 DKL</small>
     </footer>
+
+    <script>
+        function openLightbox(src) {
+            document.getElementById('lightbox-img').src = src;
+            document.getElementById('lightbox').style.display = 'flex';
+        }
+
+        function closeLightbox() {
+            document.getElementById('lightbox').style.display = 'none';
+        }
+
+        // Erlaubt das Schließen mit der ESC-Taste
+        document.addEventListener('keydown', function(e) {
+            if (e.key === "Escape") closeLightbox();
+        });
+    </script>
 
 </body>
 </html>
