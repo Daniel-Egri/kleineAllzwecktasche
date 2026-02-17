@@ -14,13 +14,26 @@
         body {
             background-color: #f0ede9;
             background-image: 
-                linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 50%, rgba(255,255,255,0.5) 100%),
+                /* 3. VERBESSERUNG: Hintergrund-Akzente an den Seiten */
+                linear-gradient(90deg, rgba(139, 90, 43, 0.03) 0%, transparent 15%, transparent 85%, rgba(139, 90, 43, 0.03) 100%),
                 url("https://www.transparenttextures.com/patterns/linen.png");
             background-attachment: fixed;
             margin: 0;
+            position: relative;
         }
 
-        /* Moderner Glass-Effekt für die Navi */
+        /* Taschen-Icons im Hintergrund (Parallax-Effekt) */
+        body::before, body::after {
+            content: "👜";
+            position: fixed;
+            top: 50%;
+            font-size: 15rem;
+            opacity: 0.03; 
+            z-index: -1;
+        }
+        body::before { left: -50px; transform: translateY(-50%) rotate(-15deg); }
+        body::after { right: -50px; transform: translateY(-50%) rotate(15deg); }
+
         nav.container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px); 
@@ -36,12 +49,10 @@
             margin-bottom: 3rem;
         }
 
-        /* Gemeinsames Styling für die weißen Kästen */
         article.produkt-header, .galerie-container {
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
-            border: 0px solid #222;
             box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
         }
@@ -57,7 +68,47 @@
             article.produkt-header { grid-template-columns: 1fr; }
         }
 
-        /* Galerie-Styling innerhalb des Kastens */
+        /* 1. VERBESSERUNG: Farb-Optionen Styling */
+        .color-dot {
+            width: 25px;
+            height: 25px;
+            border-radius: 50%;
+            border: 2px solid white;
+            box-shadow: 0 0 5px rgba(0,0,0,0.2);
+            cursor: pointer;
+            transition: transform 0.2s;
+        }
+        .color-dot:hover {
+            transform: scale(1.2);
+        }
+
+        /* 2. VERBESSERUNG: Back to Top Button Styling */
+        .back-to-top {
+            position: fixed;
+            bottom: 20px;
+            right: 20px;
+            background: var(--primary);
+            color: white !important;
+            width: 45px;
+            height: 45px;
+            border-radius: 50%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            text-decoration: none;
+            font-size: 20px;
+            font-weight: bold;
+            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+            z-index: 1500;
+            transition: opacity 0.3s, transform 0.3s;
+            opacity: 0.8;
+        }
+        .back-to-top:hover {
+            opacity: 1;
+            transform: translateY(-5px);
+            background: var(--primary-hover);
+        }
+
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -79,39 +130,37 @@
             transform: scale(1.03);
         }
 
-/* LIGHTBOX STYLING - Ohne Kreuz */
-.lightbox {
-    display: none;
-    position: fixed;
-    z-index: 2000;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0.85);
-    justify-content: center;
-    align-items: center;
-    cursor: zoom-out; /* Zeigt an, dass ein Klick hier das Bild wieder schließt */
-}
+        .lightbox {
+            display: none;
+            position: fixed;
+            z-index: 2000;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.85);
+            justify-content: center;
+            align-items: center;
+            cursor: zoom-out;
+        }
 
-.lightbox-content {
-    background: white;
-    padding: 10px;
-    border-radius: 20px;
-    max-width: 90%;
-    max-height: 85%;
-    box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-    position: relative;
-    cursor: default; /* Über dem Bild selbst soll der normale Zeiger erscheinen */
-}
+        .lightbox-content {
+            background: white;
+            padding: 10px;
+            border-radius: 20px;
+            max-width: 90%;
+            max-height: 85%;
+            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
+            position: relative;
+            cursor: default;
+        }
 
-.lightbox-content img {
-    max-width: 100%;
-    max-height: 75vh;
-    border-radius: 12px;
-    display: block;
-}
-
+        .lightbox-content img {
+            max-width: 100%;
+            max-height: 75vh;
+            border-radius: 12px;
+            display: block;
+        }
     </style>
 </head>
 <body>
@@ -148,12 +197,24 @@
                     <li>In verschiedenen Farben erhältlich</li>
                 </ul>
                 <h3>19,99 €</h3>
+                
+                <div style="margin-bottom: 1.5rem;">
+                    <p style="margin-bottom: 0.5rem;"><small>Verfügbare Farben:</small></p>
+                    <div style="display: flex; gap: 10px;">
+                        <span class="color-dot" style="background: #8b5a2b;" title="Braun"></span>
+                        <span class="color-dot" style="background: #556b2f;" title="Olivgrün"></span>
+                        <span class="color-dot" style="background: #4682b4;" title="Stahlblau"></span>
+                        <span class="color-dot" style="background: #2f4f4f;" title="Dunkelgrau"></span>
+                    </div>
+                </div>
+
                 <a href="kontakt.html" role="button" class="contrast">Jetzt anfragen</a>
             </div>
         </article>
 
         <section class="galerie-container">
             <h2 style="margin-bottom: 0.5rem;">Galerie</h2>
+            <p><small>(Klicken zum Vergrößern)</small></p>
             <div class="galerie-grid">
                 <img src="images/Detailansicht.png" alt="Detailansicht" onclick="openLightbox(this.src)">
                 <img src="images/Innenansicht.png" alt="Innenansicht" onclick="openLightbox(this.src)">
@@ -163,11 +224,13 @@
         </section>
     </main>
 
-<div id="lightbox" class="lightbox" onclick="closeLightbox()">
-    <div class="lightbox-content" onclick="event.stopPropagation()">
-        <img id="lightbox-img" src="" alt="Vergrößerte Ansicht">
+    <a href="#" class="back-to-top">↑</a>
+
+    <div id="lightbox" class="lightbox" onclick="closeLightbox()">
+        <div class="lightbox-content" onclick="event.stopPropagation()">
+            <img id="lightbox-img" src="" alt="Vergrößerte Ansicht">
+        </div>
     </div>
-</div>
 
     <footer class="container">
         <small>&copy; 2026 DKL</small>
@@ -189,5 +252,4 @@
     </script>
 
 </body>
-                               </html>
-                               
+</html>
