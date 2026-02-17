@@ -36,12 +36,17 @@
             margin-bottom: 3rem;
         }
 
-        article.produkt-header {
+        /* Gemeinsames Styling für die weißen Kästen */
+        article.produkt-header, .galerie-container {
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
             border: 0px solid #222;
             box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
+            margin-bottom: 2rem;
+        }
+
+        article.produkt-header {
             display: grid;
             grid-template-columns: 1fr 1fr;
             gap: 2rem;
@@ -52,16 +57,16 @@
             article.produkt-header { grid-template-columns: 1fr; }
         }
 
-        /* Galerie-Styling */
+        /* Galerie-Styling innerhalb des Kastens */
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
-            gap: 1rem;
-            margin-bottom: 2rem;
+            gap: 1.5rem;
+            margin-top: 1.5rem;
         }
 
         .galerie-grid img {
-            border-radius: 8px;
+            border-radius: 12px;
             cursor: zoom-in;
             transition: transform 0.2s;
             width: 100%;
@@ -74,7 +79,7 @@
             transform: scale(1.03);
         }
 
-        /* LIGHTBOX STYLING (Der weiße Kasten beim Klicken) */
+        /* LIGHTBOX STYLING */
         .lightbox {
             display: none;
             position: fixed;
@@ -161,10 +166,9 @@
             </div>
         </article>
 
-        <hr>
-
-        <section>
-            <h2>Galerie</h2>
+        <section class="galerie-container">
+            <h2 style="margin-bottom: 0.5rem;">Galerie</h2>
+            <p><small>(Klicken zum Vergrößern)</small></p>
             <div class="galerie-grid">
                 <img src="images/Detailansicht.png" alt="Detailansicht" onclick="openLightbox(this.src)">
                 <img src="images/Innenansicht.png" alt="Innenansicht" onclick="openLightbox(this.src)">
@@ -195,11 +199,11 @@
             document.getElementById('lightbox').style.display = 'none';
         }
 
-        // Erlaubt das Schließen mit der ESC-Taste
         document.addEventListener('keydown', function(e) {
             if (e.key === "Escape") closeLightbox();
         });
     </script>
 
 </body>
-</html>
+                               </html>
+                               
