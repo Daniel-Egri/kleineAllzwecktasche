@@ -20,20 +20,19 @@
             margin: 0;
         }
 
-        /* Taschen-Icons im Hintergrund (Parallax-Effekt) */
+        /* Taschen-Icons im Hintergrund */
         body::before, body::after {
             content: "👜";
             position: fixed;
             top: 50%;
             font-size: 12rem;
-            opacity: 0.08; /* Sichtbarkeit erhöht */
+            opacity: 0.08;
             z-index: -1;
             pointer-events: none;
         }
         body::before { left: -30px; transform: translateY(-50%) rotate(-15deg); }
         body::after { right: -30px; transform: translateY(-50%) rotate(15deg); }
 
-        /* Navigation ohne Außenabstand unten */
         nav.container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px); 
@@ -45,21 +44,18 @@
             margin-bottom: 0 !important;
         }
 
-        /* Main-Bereich rückt ganz nach oben */
+        /* Der korrigierte Abstand für die Einheitlichkeit */
         main.container {
-            margin-top: 0 !important;
-            padding-top: 1rem !important;
+            margin-top: 1rem !important; 
             margin-bottom: 3rem;
         }
 
-        /* Gemeinsames Styling für die weißen Kästen */
         article.produkt-header, .galerie-container {
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
             box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
-            margin-top: 0 !important; /* Kein Abstand nach oben */
         }
 
         article.produkt-header {
@@ -69,23 +65,28 @@
             align-items: center;
         }
 
+        #produktBild {
+            border-radius: 12px; 
+            border: 1px solid #ddd;
+            transition: opacity 0.3s ease-in-out;
+        }
+
         @media (max-width: 768px) {
             article.produkt-header { grid-template-columns: 1fr; }
         }
 
         /* Farb-Optionen Buttons */
         .color-dot {
-            width: 25px;
-            height: 25px;
+            width: 30px;
+            height: 30px;
             border-radius: 50%;
             border: 2px solid white;
             box-shadow: 0 0 5px rgba(0,0,0,0.2);
             cursor: pointer;
-            transition: transform 0.2s;
+            transition: transform 0.2s, border-color 0.3s;
         }
-        .color-dot:hover {
-            transform: scale(1.2);
-        }
+        .color-dot:hover { transform: scale(1.2); }
+        .color-dot.active { border-color: var(--primary); }
 
         /* Back to Top Button */
         .back-to-top {
@@ -108,12 +109,7 @@
             transition: opacity 0.3s, transform 0.3s;
             opacity: 0.8;
         }
-        .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-5px);
-        }
 
-        /* Galerie-Grid */
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -124,18 +120,12 @@
         .galerie-grid img {
             border-radius: 12px;
             cursor: zoom-in;
-            transition: transform 0.2s;
             width: 100%;
             height: 200px;
             object-fit: cover;
             border: 1px solid #ddd;
         }
 
-        .galerie-grid img:hover {
-            transform: scale(1.03);
-        }
-
-        /* Lightbox-Design */
         .lightbox {
             display: none;
             position: fixed;
@@ -147,7 +137,6 @@
             background-color: rgba(0, 0, 0, 0.85);
             justify-content: center;
             align-items: center;
-            cursor: zoom-out;
         }
 
         .lightbox-content {
@@ -156,9 +145,6 @@
             border-radius: 20px;
             max-width: 90%;
             max-height: 85%;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-            position: relative;
-            cursor: default;
         }
 
         .lightbox-content img {
@@ -191,12 +177,12 @@
     <main class="container">
         <article class="produkt-header">
             <div>
-                <img src="images/Noel.jpg" alt="Die praktische Tasche Hauptansicht" style="border-radius: 12px; border: 1px solid #ddd;">
+                <img id="produktBild" src="images/braun.jpg" alt="Die praktische Tasche Hauptansicht">
             </div>
             <div>
                 <h1>Die praktische Tasche</h1>
                 <p><strong>Robust, handlich, unverzichtbar.</strong></p>
-                <p>Unsere Allzwecktasche ist der perfekte Begleiter für Alltag und Reise. Hergestellt aus hochwertigen Materialien bietet sie Platz für alles Wichtige.</p>
+                <p>Unsere Allzwecktasche ist der perfekte Begleiter für Alltag und Reise.</p>
                 <ul>
                     <li>Wasserabweisendes Material</li>
                     <li>Maße: 20cm x 15cm</li>
@@ -205,12 +191,12 @@
                 <h3>19,99 €</h3>
                 
                 <div style="margin-bottom: 1.5rem;">
-                    <p style="margin-bottom: 0.5rem;"><small>Verfügbare Farben:</small></p>
-                    <div style="display: flex; gap: 10px;">
-                        <span class="color-dot" style="background: #8b5a2b;" title="Braun"></span>
-                        <span class="color-dot" style="background: #556b2f;" title="Olivgrün"></span>
-                        <span class="color-dot" style="background: #4682b4;" title="Stahlblau"></span>
-                        <span class="color-dot" style="background: #2f4f4f;" title="Dunkelgrau"></span>
+                    <p style="margin-bottom: 0.5rem;"><small>Farbe auswählen:</small></p>
+                    <div style="display: flex; gap: 15px;">
+                        <span class="color-dot active" style="background: #8b5a2b;" onclick="changeColor('images/braun.jpg', this)" title="Braun"></span>
+                        <span class="color-dot" style="background: #556b2f;" onclick="changeColor('images/oliv.jpg', this)" title="Olivgrün"></span>
+                        <span class="color-dot" style="background: #4682b4;" onclick="changeColor('images/stahlblau.jpg', this)" title="Stahlblau"></span>
+                        <span class="color-dot" style="background: #2f4f4f;" onclick="changeColor('images/dunkelgrau.jpg', this)" title="Dunkelgrau"></span>
                     </div>
                 </div>
 
@@ -220,12 +206,11 @@
 
         <section class="galerie-container">
             <h2 style="margin-bottom: 0.5rem;">Galerie</h2>
-            <p><small>(Klicken zum Vergrößern)</small></p>
             <div class="galerie-grid">
-                <img src="images/Detailansicht.png" alt="Detailansicht" onclick="openLightbox(this.src)">
-                <img src="images/Innenansicht.png" alt="Innenansicht" onclick="openLightbox(this.src)">
-                <img src="images/Trageansicht.png" alt="Trageansicht" onclick="openLightbox(this.src)">
-                <img src="images/Farbvarianten.png" alt="Farbvarianten" onclick="openLightbox(this.src)">
+                <img src="images/braun.jpg" alt="Vorderansicht" onclick="openLightbox(this.src)">
+                <img src="images/oliv.jpg" alt="Seitenansicht" onclick="openLightbox(this.src)">
+                <img src="images/stahlblau.jpg" alt="Innenansicht" onclick="openLightbox(this.src)">
+                <img src="images/dunkelgrau.jpg" alt="Tragebeispiel" onclick="openLightbox(this.src)">
             </div>
         </section>
     </main>
@@ -243,6 +228,23 @@
     </footer>
 
     <script>
+        // Funktion zum Wechseln des Produktbildes
+        function changeColor(imgSrc, element) {
+            const mainImg = document.getElementById('produktBild');
+            
+            // Sanfter Übergang
+            mainImg.style.opacity = '0.3';
+            
+            setTimeout(() => {
+                mainImg.src = imgSrc;
+                mainImg.style.opacity = '1';
+            }, 150);
+
+            // Aktiven Punkt markieren
+            document.querySelectorAll('.color-dot').forEach(dot => dot.classList.remove('active'));
+            element.classList.add('active');
+        }
+
         function openLightbox(src) {
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
@@ -258,4 +260,4 @@
     </script>
 
 </body>
-                        </html>
+</html>
