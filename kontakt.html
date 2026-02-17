@@ -3,10 +3,9 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Die praktische Tasche - Kontak</title>
+    <title>Die praktische Tasche - Kontakt</title>
     <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@picocss/pico@1/css/pico.min.css">
     <style>
-      /* Dein bewährtes Design-System */
       :root {
         --primary: #8b5a2b; 
         --primary-hover: #6f4722;
@@ -15,22 +14,13 @@
       body {
         background-color: #f0ede9;
         background-image: 
-            linear-gradient(90deg, rgba(255,255,255,0.5) 0%, transparent 50%, rgba(255,255,255,0.5) 100%),
+            linear-gradient(90deg, rgba(139, 90, 43, 0.04) 0%, transparent 20%, transparent 80%, rgba(139, 90, 43, 0.04) 100%),
             url("https://www.transparenttextures.com/patterns/linen.png");
         background-attachment: fixed;
         margin: 0;
       }
 
-      main.container {
-        background: white;
-        padding: 2.5rem;
-        border-radius: 20px;
-        box-shadow: 0 15px 35px rgba(0,0,0,0.1); 
-        margin-top: 2rem;
-        margin-bottom: 2rem;
-        border: 0px solid #222; /* Der markante Rahmen */
-      }
-
+      /* Navigation bündig ohne Abstand unten */
       nav.container {
         background: rgba(255, 255, 255, 0.8);
         backdrop-filter: blur(10px);
@@ -39,6 +29,18 @@
         position: sticky;
         top: 0;
         z-index: 1000;
+        margin-bottom: 0 !important;
+      }
+
+      /* Main-Inhalt rückt nach oben und nutzt den einheitlichen Schatten */
+      main.container {
+        background: white;
+        padding: 2.5rem;
+        border-radius: 20px;
+        box-shadow: 10px 10px 0px rgba(0,0,0,0.1); 
+        margin-top: 0 !important;
+        padding-top: 1.5rem !important;
+        margin-bottom: 3rem;
       }
 
       .kontakt-grid {
@@ -47,7 +49,6 @@
         gap: 2rem;
       }
 
-      /* Styling für die Kontakt-Icons/Info */
       .kontakt-info {
         margin-bottom: 2rem;
         padding: 1rem;
@@ -66,18 +67,46 @@
         border-radius: 12px;
         border: 1px solid #ddd;
       }
+
+      /* Back to Top Button Styling */
+      .back-to-top {
+          position: fixed;
+          bottom: 20px;
+          right: 20px;
+          background: var(--primary);
+          color: white !important;
+          width: 45px;
+          height: 45px;
+          border-radius: 50%;
+          display: flex;
+          justify-content: center;
+          align-items: center;
+          text-decoration: none;
+          font-size: 20px;
+          font-weight: bold;
+          box-shadow: 0 4px 10px rgba(0,0,0,0.3);
+          z-index: 1500;
+          transition: opacity 0.3s, transform 0.3s;
+          opacity: 0.8;
+      }
+      .back-to-top:hover {
+          opacity: 1;
+          transform: translateY(-5px);
+          background: var(--primary-hover);
+      }
     </style>
 </head>
 <body>
 
     <nav class="container">
-        <li>
-  <strong style="display: flex; align-items: center; gap: 10px;">
-    <span style="background: #8b5a2b; color: white; padding: 2px 8px; border-radius: 4px; font-family: sans-serif; font-size: 0.8em;">DKL</span> 
-    Taschenmanufaktur
-  </strong>
-        </li>
-        
+        <ul>
+            <li>
+                <strong style="display: flex; align-items: center; gap: 10px;">
+                    <span style="background: #8b5a2b; color: white; padding: 2px 8px; border-radius: 4px; font-family: sans-serif; font-size: 0.8em;">DKL</span> 
+                    Taschenmanufaktur
+                </strong>
+            </li>
+        </ul>
         <ul>
             <li><a href="index.html">Home</a></li>
             <li><a href="impressum.html">Impressum</a></li>
@@ -115,13 +144,15 @@
             <section>
                 <h3>Unser Standort</h3>
                 <iframe 
-                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2428.4103126742516!2d13.404954!3d52.520007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x47a84e1f6fd49339%3A0x67302f37c4e5b6!2sBerlin!5e0!3m2!1sde!2sde!4v1614123456789!5m2!1sde!2sde" 
+                    src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d2514.823456789!2d13.404954!3d52.520007!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x0%3A0x0!2zNTLCsDMxJzEyLjAiTiAxM8KwMjQnMTcuOCJF!5e0!3m2!1sde!2sde!4v1234567890" 
                     allowfullscreen="" loading="lazy">
                 </iframe>
                 <p><small>Musterstraße 1, 12345 Musterstadt</small></p>
             </section>
         </div>
     </main>
+
+    <a href="#" class="back-to-top">↑</a>
 
     <footer class="container">
         <small>© 2026 DKL</small>
