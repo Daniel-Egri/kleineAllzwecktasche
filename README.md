@@ -1,4 +1,4 @@
-# **👜 Projekt: Die praktische Allzwecktasche**
+# **👜 Projekt: Die praktische Tasche**
 
 Willkommen zum Repository meines Web-Projekts! Dieses Projekt entstand im Rahmen meines Trainings im **Berufstrainingszentrum (BTZ)**. Ziel war es, eine moderne, responsive Produkt-Website für eine fiktive Taschenmarke zu entwerfen und umzusetzen.
 
