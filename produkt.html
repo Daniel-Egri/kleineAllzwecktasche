@@ -13,27 +13,25 @@
 
         body {
             background-color: #f0ede9;
-            background-image: 
-                linear-gradient(90deg, rgba(139, 90, 43, 0.04) 0%, transparent 20%, transparent 80%, rgba(139, 90, 43, 0.04) 100%),
-                url("https://www.transparenttextures.com/patterns/linen.png");
+            background-image: url("https://www.transparenttextures.com/patterns/linen.png");
             background-attachment: fixed;
             margin: 0;
+            overflow-x: hidden; /* Verhindert seitliches Scrollen durch die Icons */
         }
 
-        /* Taschen-Icons im Hintergrund (Parallax-Effekt) */
-        body::before, body::after {
-            content: "👜";
+        /* TASCHEN-ICONS: Jetzt deutlicher und besser positioniert */
+        .bg-icon {
             position: fixed;
             top: 50%;
-            font-size: 12rem;
-            opacity: 0.08; /* Sichtbarkeit erhöht */
+            font-size: 10rem;
+            opacity: 0.15; /* Deutlich sichtbarer eingestellt */
             z-index: -1;
             pointer-events: none;
+            user-select: none;
         }
-        body::before { left: -30px; transform: translateY(-50%) rotate(-15deg); }
-        body::after { right: -30px; transform: translateY(-50%) rotate(15deg); }
+        .bg-left { left: 20px; transform: translateY(-50%) rotate(-15deg); }
+        .bg-right { right: 20px; transform: translateY(-50%) rotate(15deg); }
 
-        /* Navigation ohne Außenabstand unten */
         nav.container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px); 
@@ -45,21 +43,18 @@
             margin-bottom: 0 !important;
         }
 
-        /* Main-Bereich rückt ganz nach oben */
         main.container {
             margin-top: 0 !important;
-            padding-top: 1rem !important;
+            padding-top: 1.5rem !important;
             margin-bottom: 3rem;
         }
 
-        /* Gemeinsames Styling für die weißen Kästen */
         article.produkt-header, .galerie-container {
             background: white;
             padding: 2.5rem;
             border-radius: 20px;
             box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
             margin-bottom: 2rem;
-            margin-top: 0 !important; /* Kein Abstand nach oben */
         }
 
         article.produkt-header {
@@ -69,11 +64,14 @@
             align-items: center;
         }
 
+        @media (max-width: 1200px) {
+            .bg-icon { display: none; } /* Versteckt Icons auf kleinen Bildschirmen, damit sie den Text nicht überlagern */
+        }
+
         @media (max-width: 768px) {
             article.produkt-header { grid-template-columns: 1fr; }
         }
 
-        /* Farb-Optionen Buttons */
         .color-dot {
             width: 25px;
             height: 25px;
@@ -83,11 +81,8 @@
             cursor: pointer;
             transition: transform 0.2s;
         }
-        .color-dot:hover {
-            transform: scale(1.2);
-        }
+        .color-dot:hover { transform: scale(1.2); }
 
-        /* Back to Top Button */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -102,18 +97,10 @@
             align-items: center;
             text-decoration: none;
             font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 1500;
-            transition: opacity 0.3s, transform 0.3s;
             opacity: 0.8;
         }
-        .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-5px);
-        }
 
-        /* Galerie-Grid */
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -124,18 +111,12 @@
         .galerie-grid img {
             border-radius: 12px;
             cursor: zoom-in;
-            transition: transform 0.2s;
             width: 100%;
             height: 200px;
             object-fit: cover;
             border: 1px solid #ddd;
         }
 
-        .galerie-grid img:hover {
-            transform: scale(1.03);
-        }
-
-        /* Lightbox-Design */
         .lightbox {
             display: none;
             position: fixed;
@@ -156,9 +137,6 @@
             border-radius: 20px;
             max-width: 90%;
             max-height: 85%;
-            box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-            position: relative;
-            cursor: default;
         }
 
         .lightbox-content img {
@@ -171,11 +149,14 @@
 </head>
 <body>
 
+    <div class="bg-icon bg-left">👜</div>
+    <div class="bg-icon bg-right">👜</div>
+
     <nav class="container">
         <ul>
             <li>
                 <strong style="display: flex; align-items: center; gap: 10px;">
-                    <span style="background: #8b5a2b; color: white; padding: 2px 8px; border-radius: 4px; font-family: sans-serif; font-size: 0.8em;">DKL</span> 
+                    <span style="background: #8b5a2b; color: white; padding: 2px 8px; border-radius: 4px; font-size: 0.8em;">DKL</span> 
                     Taschenmanufaktur
                 </strong>
             </li>
@@ -191,12 +172,12 @@
     <main class="container">
         <article class="produkt-header">
             <div>
-                <img src="images/Noel.jpg" alt="Die praktische Tasche Hauptansicht" style="border-radius: 12px; border: 1px solid #ddd;">
+                <img src="images/Noel.jpg" alt="Hauptansicht" style="border-radius: 12px; border: 1px solid #ddd;">
             </div>
             <div>
                 <h1>Die praktische Tasche</h1>
                 <p><strong>Robust, handlich, unverzichtbar.</strong></p>
-                <p>Unsere Allzwecktasche ist der perfekte Begleiter für Alltag und Reise. Hergestellt aus hochwertigen Materialien bietet sie Platz für alles Wichtige.</p>
+                <p>Unsere Allzwecktasche ist der perfekte Begleiter für Alltag und Reise.</p>
                 <ul>
                     <li>Wasserabweisendes Material</li>
                     <li>Maße: 20cm x 15cm</li>
@@ -207,10 +188,10 @@
                 <div style="margin-bottom: 1.5rem;">
                     <p style="margin-bottom: 0.5rem;"><small>Verfügbare Farben:</small></p>
                     <div style="display: flex; gap: 10px;">
-                        <span class="color-dot" style="background: #8b5a2b;" title="Braun"></span>
-                        <span class="color-dot" style="background: #556b2f;" title="Olivgrün"></span>
-                        <span class="color-dot" style="background: #4682b4;" title="Stahlblau"></span>
-                        <span class="color-dot" style="background: #2f4f4f;" title="Dunkelgrau"></span>
+                        <span class="color-dot" style="background: #8b5a2b;"></span>
+                        <span class="color-dot" style="background: #556b2f;"></span>
+                        <span class="color-dot" style="background: #4682b4;"></span>
+                        <span class="color-dot" style="background: #2f4f4f;"></span>
                     </div>
                 </div>
 
@@ -219,13 +200,12 @@
         </article>
 
         <section class="galerie-container">
-            <h2 style="margin-bottom: 0.5rem;">Galerie</h2>
-            <p><small>(Klicken zum Vergrößern)</small></p>
+            <h2>Galerie</h2>
             <div class="galerie-grid">
-                <img src="images/Detailansicht.png" alt="Detailansicht" onclick="openLightbox(this.src)">
-                <img src="images/Innenansicht.png" alt="Innenansicht" onclick="openLightbox(this.src)">
-                <img src="images/Trageansicht.png" alt="Trageansicht" onclick="openLightbox(this.src)">
-                <img src="images/Farbvarianten.png" alt="Farbvarianten" onclick="openLightbox(this.src)">
+                <img src="images/Detailansicht.png" alt="Detail" onclick="openLightbox(this.src)">
+                <img src="images/Innenansicht.png" alt="Innen" onclick="openLightbox(this.src)">
+                <img src="images/Trageansicht.png" alt="Tragen" onclick="openLightbox(this.src)">
+                <img src="images/Farbvarianten.png" alt="Farben" onclick="openLightbox(this.src)">
             </div>
         </section>
     </main>
@@ -234,7 +214,7 @@
 
     <div id="lightbox" class="lightbox" onclick="closeLightbox()">
         <div class="lightbox-content" onclick="event.stopPropagation()">
-            <img id="lightbox-img" src="" alt="Vergrößerte Ansicht">
+            <img id="lightbox-img" src="" alt="Zoom">
         </div>
     </div>
 
@@ -247,15 +227,10 @@
             document.getElementById('lightbox-img').src = src;
             document.getElementById('lightbox').style.display = 'flex';
         }
-
         function closeLightbox() {
             document.getElementById('lightbox').style.display = 'none';
         }
-
-        document.addEventListener('keydown', function(e) {
-            if (e.key === "Escape") closeLightbox();
-        });
+        document.addEventListener('keydown', (e) => { if (e.key === "Escape") closeLightbox(); });
     </script>
-
 </body>
-    </html>
+</html>
