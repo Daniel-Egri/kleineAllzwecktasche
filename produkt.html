@@ -79,7 +79,7 @@
             transform: scale(1.03);
         }
 
-/* LIGHTBOX STYLING */
+/* LIGHTBOX STYLING - Ohne Kreuz */
 .lightbox {
     display: none;
     position: fixed;
@@ -91,7 +91,7 @@
     background-color: rgba(0, 0, 0, 0.85);
     justify-content: center;
     align-items: center;
-    cursor: default; /* Cursor auf Standard, damit man nicht denkt, man schließt überall */
+    cursor: zoom-out; /* Zeigt an, dass ein Klick hier das Bild wieder schließt */
 }
 
 .lightbox-content {
@@ -101,7 +101,8 @@
     max-width: 90%;
     max-height: 85%;
     box-shadow: 0 15px 50px rgba(0,0,0,0.5);
-    position: relative; /* Wichtig für die Position des Kreuzes */
+    position: relative;
+    cursor: default; /* Über dem Bild selbst soll der normale Zeiger erscheinen */
 }
 
 .lightbox-content img {
@@ -109,31 +110,6 @@
     max-height: 75vh;
     border-radius: 12px;
     display: block;
-}
-
-/* Das Schließkreuz - jetzt besser positioniert */
-.close-btn {
-    position: absolute;
-    top: 10px; /* In den Kasten geschoben für bessere Bedienung */
-    right: 10px;
-    background: var(--primary);
-    color: white;
-    width: 35px;
-    height: 35px;
-    border-radius: 50%;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    font-weight: bold;
-    border: 2px solid white;
-    cursor: pointer; /* Zeigt an, dass man hier klicken kann */
-    z-index: 2010;
-    transition: transform 0.2s;
-}
-
-.close-btn:hover {
-    transform: scale(1.1);
-    background: var(--primary-hover);
 }
 
     </style>
