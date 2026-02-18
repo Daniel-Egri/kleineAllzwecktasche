@@ -21,15 +21,32 @@
         }
 
         /* Taschen-Icons im Hintergrund */
-        body::before, body::after {
-            content: "👜";
-            position: fixed;
-            top: 50%;
-            font-size: 12rem;
-            opacity: 0.08;
-            z-index: -1;
-            pointer-events: none;
-        }
+body::before, body::after {
+    content: "👜";
+    position: fixed;
+    top: 50%;
+    font-size: 12rem;
+    opacity: 0.08;
+    z-index: -1;
+    pointer-events: none;
+    /* Versteckt die Icons standardmäßig (für Handys) */
+    display: none; 
+}
+
+/* Nur auf großen Bildschirmen (Desktop) anzeigen */
+@media (min-width: 1200px) {
+    body::before, body::after {
+        display: block;
+    }
+    body::before { 
+        left: 20px; 
+        transform: translateY(-50%) rotate(-15deg); 
+    }
+    body::after { 
+        right: 20px; 
+        transform: translateY(-50%) rotate(15deg); 
+    }
+}
         body::before { left: -30px; transform: translateY(-50%) rotate(-15deg); }
         body::after { right: -30px; transform: translateY(-50%) rotate(15deg); }
 
