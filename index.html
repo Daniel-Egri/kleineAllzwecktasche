@@ -11,6 +11,13 @@
             --primary-hover: #6f4722;
         }
 
+        /* Verhindert den weißen Balken rechts auf Mobilgeräten */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
+
         body {
             background-color: #f0ede9;
             background-image: 
@@ -18,6 +25,21 @@
                 url("https://www.transparenttextures.com/patterns/linen.png");
             background-attachment: fixed;
             margin: 0;
+        }
+
+        /* NEU: Styling für das Logo in der Navigation */
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 12px; /* Abgerundete Ecken */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: block;
+        }
+
+        /* Hover-Effekt für das Logo */
+        .nav-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
         /* Navigation bündig ohne Abstand unten */
@@ -47,13 +69,16 @@
             letter-spacing: -1px;
         }
 
-        img {
+        /* Das große Produktbild auf der Startseite */
+        .main-img {
             border-radius: 12px;
             transition: transform 0.3s ease;
             border: 1px solid #ddd;
+            width: 100%; /* Sorgt dafür, dass es auf dem Handy nicht rausragt */
+            height: auto;
         }
 
-        img:hover {
+        .main-img:hover {
             transform: translateY(-5px);
         }
 
@@ -88,28 +113,28 @@
 <body>
 
     <nav class="container">
-    <ul>
-        <li>
-            <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
-                <img src="images/logo.jpg" alt="DKL Logo" style="height: 40px; width: auto; display: block;">
-                <strong style="font-size: 1.1em;">Taschenmanufaktur</strong>
-            </a>
-        </li>
-    </ul>
-    <ul>
-        <li><a href="index.html" role="button">Home</a></li>
-        <li><a href="impressum.html">Impressum</a></li>
-        <li><a href="produkt.html">Produkt</a></li>
-        <li><a href="kontakt.html">Kontakt</a></li>
-    </ul>
-        </nav>
+        <ul>
+            <li>
+                <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                    <img src="images/logo.jpg" alt="DKL Logo" class="nav-logo">
+                    <strong style="font-size: 1.1em;">Taschenmanufaktur</strong>
+                </a>
+            </li>
+        </ul>
+        <ul>
+            <li><a href="index.html" role="button">Home</a></li>
+            <li><a href="impressum.html">Impressum</a></li>
+            <li><a href="produkt.html">Produkt</a></li>
+            <li><a href="kontakt.html">Kontakt</a></li>
+        </ul>
+    </nav>
     
     <main class="container">
         <h1>Willkommen bei DKL</h1>
         <p>Wir glauben, dass Organisation auch gut aussehen darf. Entdecke unsere Auswahl an Allzwecktaschen –<br>
             robust, zeitlos und bereit für alles, was dein Alltag bereitstellt. Such dir deine Farbe aus und bring Struktur in dein Leben.</p>
         
-        <img src="images/Noel.jpg" alt="Platzhalter für die praktische Tasche">
+        <img src="images/Noel.jpg" alt="Unsere praktische Tasche" class="main-img">
     </main>
 
     <a href="#" class="back-to-top">↑</a>
