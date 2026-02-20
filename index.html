@@ -12,7 +12,6 @@
             --primary-hover: #6f4722;
         }
 
-        /* Verhindert den weißen Balken rechts auf Mobilgeräten */
         html, body {
             overflow-x: hidden;
             width: 100%;
@@ -28,22 +27,19 @@
             margin: 0;
         }
 
-        /* NEU: Styling für das Logo in der Navigation */
         .nav-logo {
             height: 45px;
             width: auto;
-            border-radius: 12px; /* Abgerundete Ecken */
+            border-radius: 12px;
             transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
             display: block;
         }
 
-        /* Hover-Effekt für das Logo */
         .nav-logo:hover {
             transform: scale(1.1);
             box-shadow: 0 4px 10px rgba(0,0,0,0.2);
         }
 
-        /* Navigation bündig ohne Abstand unten */
         nav.container {
             background: rgba(255, 255, 255, 0.8);
             backdrop-filter: blur(10px); 
@@ -55,7 +51,6 @@
             margin-bottom: 0 !important;
         }
 
-        /* Main-Inhalt rückt nach oben */
         main.container {
             background: white;
             padding: 2.5rem;
@@ -63,27 +58,43 @@
             box-shadow: 10px 10px 0px rgba(0,0,0,0.1);
             margin-top: 1rem !important;
             margin-bottom: 3rem;
+            text-align: center; /* Zentriert den Text und das Logo */
+        }
+
+        /* NEU: Styling für das große Hero-Logo */
+        .hero-logo {
+            width: 180px; /* Schön groß auf der Startseite */
+            height: auto;
+            border-radius: 25px; /* Passend zum Design abgerundet */
+            margin-bottom: 1.5rem;
+            box-shadow: 0 10px 20px rgba(0,0,0,0.1);
+            transition: transform 0.3s ease;
+        }
+
+        .hero-logo:hover {
+            transform: scale(1.05);
         }
 
         h1 {
             font-family: 'Georgia', serif;
             letter-spacing: -1px;
+            margin-bottom: 1rem;
         }
 
-        /* Das große Produktbild auf der Startseite */
         .main-img {
             border-radius: 12px;
             transition: transform 0.3s ease;
             border: 1px solid #ddd;
-            width: 100%; /* Sorgt dafür, dass es auf dem Handy nicht rausragt */
+            width: 100%;
+            max-width: 800px; /* Verhindert, dass das Produktbild zu riesig wird */
             height: auto;
+            margin-top: 2rem;
         }
 
         .main-img:hover {
             transform: translateY(-5px);
         }
 
-        /* Back to Top Button Styling */
         .back-to-top {
             position: fixed;
             bottom: 20px;
@@ -98,16 +109,8 @@
             align-items: center;
             text-decoration: none;
             font-size: 20px;
-            font-weight: bold;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.3);
             z-index: 1500;
-            transition: opacity 0.3s, transform 0.3s;
             opacity: 0.8;
-        }
-        .back-to-top:hover {
-            opacity: 1;
-            transform: translateY(-5px);
-            background: var(--primary-hover);
         }
     </style>
 </head>
@@ -131,9 +134,12 @@
     </nav>
     
     <main class="container">
-        <h1>Willkommen bei DKL</h1>
+        <img src="images/logo.jpg" alt="DKL Logo groß" class="hero-logo">
+        
+        <h1>Willkommen in unserer Manufaktur</h1>
+        
         <p>Wir glauben, dass Organisation auch gut aussehen darf. Entdecke unsere Auswahl an Allzwecktaschen –<br>
-            robust, zeitlos und bereit für alles, was dein Alltag bereitstellt. Such dir deine Farbe aus und bring Struktur in dein Leben.</p>
+            robust, zeitlos und bereit für alles, was dein Alltag bereitstellt.</p>
         
         <img src="images/Noel.jpg" alt="Unsere praktische Tasche" class="main-img">
     </main>
