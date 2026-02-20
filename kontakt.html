@@ -20,6 +20,21 @@
         margin: 0;
       }
 
+      /* NEU: Styling für das Logo in der Navigation */
+      .nav-logo {
+          height: 45px;
+          width: auto;
+          border-radius: 12px; /* Abgerundete Ecken */
+          transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+          display: block;
+      }
+
+      /* Hover-Effekt: Logo hebt sich leicht ab */
+      .nav-logo:hover {
+          transform: scale(1.1);
+          box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+      }
+
       /* Navigation bündig ohne Abstand unten */
       nav.container {
         background: rgba(255, 255, 255, 0.8);
@@ -100,8 +115,8 @@
   <nav class="container">
     <ul>
         <li>
-            <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
-                <img src="images/logo.jpg" alt="DKL Logo" style="height: 40px; width: auto; display: block;">
+            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                <img src="images/logo.jpg" alt="DKL Logo" class="nav-logo">
                 <strong style="font-size: 1.1em;">Taschenmanufaktur</strong>
             </a>
         </li>
@@ -112,7 +127,7 @@
         <li><a href="produkt.html">Produkt</a></li>
         <li><a href="kontakt.html" role="button">Kontakt</a></li>
     </ul>
-        </nav>
+  </nav>
 
     <main class="container">
         <h1>Kontaktieren Sie uns</h1>
@@ -158,4 +173,4 @@
     </footer>
 
 </body>
-</html>
+    </html>
