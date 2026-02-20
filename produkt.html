@@ -10,6 +10,13 @@
             --primary: #8b5a2b; 
             --primary-hover: #6f4722;
         }
+
+        /* Verhindert den weißen Balken rechts auf Mobilgeräten */
+        html, body {
+            overflow-x: hidden;
+            width: 100%;
+            position: relative;
+        }
         
         body {
             background-color: #f0ede9;
@@ -20,35 +27,47 @@
             margin: 0;
         }
 
-        /* Taschen-Icons im Hintergrund */
-body::before, body::after {
-    content: "👜";
-    position: fixed;
-    top: 50%;
-    font-size: 12rem;
-    opacity: 0.08;
-    z-index: -1;
-    pointer-events: none;
-    /* Versteckt die Icons standardmäßig (für Handys) */
-    display: none; 
-}
+        /* NEU: Styling für das Logo in der Navigation */
+        .nav-logo {
+            height: 45px;
+            width: auto;
+            border-radius: 12px; /* Abgerundete Ecken */
+            transition: transform 0.2s ease-in-out, box-shadow 0.2s ease-in-out;
+            display: block;
+        }
 
-/* Nur auf großen Bildschirmen (Desktop) anzeigen */
-@media (min-width: 1200px) {
-    body::before, body::after {
-        display: block;
-    }
-    body::before { 
-        left: 20px; 
-        transform: translateY(-50%) rotate(-15deg); 
-    }
-    body::after { 
-        right: 20px; 
-        transform: translateY(-50%) rotate(15deg); 
-    }
-}
-        body::before { left: -30px; transform: translateY(-50%) rotate(-15deg); }
-        body::after { right: -30px; transform: translateY(-50%) rotate(15deg); }
+        /* Hover-Effekt für das Logo */
+        .nav-logo:hover {
+            transform: scale(1.1);
+            box-shadow: 0 4px 10px rgba(0,0,0,0.2);
+        }
+
+        /* Taschen-Icons im Hintergrund */
+        body::before, body::after {
+            content: "👜";
+            position: fixed;
+            top: 50%;
+            font-size: 12rem;
+            opacity: 0.08;
+            z-index: -1;
+            pointer-events: none;
+            display: none; 
+        }
+
+        /* Nur auf großen Bildschirmen (Desktop) anzeigen */
+        @media (min-width: 1200px) {
+            body::before, body::after {
+                display: block;
+            }
+            body::before { 
+                left: 20px; 
+                transform: translateY(-50%) rotate(-15deg); 
+            }
+            body::after { 
+                right: 20px; 
+                transform: translateY(-50%) rotate(15deg); 
+            }
+        }
 
         nav.container {
             background: rgba(255, 255, 255, 0.8);
@@ -61,14 +80,12 @@ body::before, body::after {
             margin-bottom: 0 !important;
         }
 
-        /* Der gewünschte einheitliche Abstand zur Navi */
         main.container {
             margin-top: 0 !important; 
             padding-top: 1rem !important;
             margin-bottom: 3rem;
         }
 
-        /* Separate weiße Kästen */
         article.produkt-header, .galerie-container {
             background: white;
             padding: 2.5rem;
@@ -104,7 +121,6 @@ body::before, body::after {
         .color-dot:hover { transform: scale(1.2); }
         .color-dot.active { border-color: var(--primary); }
 
-        /* Galerie-Styling */
         .galerie-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
@@ -178,8 +194,8 @@ body::before, body::after {
     <nav class="container">
     <ul>
         <li>
-            <a href="index.html" style="display: flex; align-items: center; gap: 10px; text-decoration: none; color: inherit;">
-                <img src="images/logo.jpg" alt="DKL Logo" style="height: 40px; width: auto; display: block;">
+            <a href="index.html" style="display: flex; align-items: center; gap: 12px; text-decoration: none; color: inherit;">
+                <img src="images/logo.jpg" alt="DKL Logo" class="nav-logo">
                 <strong style="font-size: 1.1em;">Taschenmanufaktur</strong>
             </a>
         </li>
